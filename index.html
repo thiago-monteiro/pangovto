@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-language" content="en-EN" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>FOOT VTO</title>
+
+  <script src="dist/WebARRocksHand.js"></script>
+  <script src="libs/three/v131/build/three.js"></script>
+  <script src="libs/three/v131/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="helpers/HandTrackerThreeHelper.js"></script>
+  <script src="helpers/landmarksStabilizers/OneEuroLMStabilizer.js"></script>
+  <script src="./main.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <style type='text/css'>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .modal {
+      display: flex;
+      flex-direction: column;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      transition-duration: 500ms;
+      position: fixed;
+    }
+
+    #loading {
+      background: #1c3e83;
+      color: white;
+      opacity: 1;
+      z-index: 10;
+    }
+
+    #loading>div {
+      margin: auto;
+      font-size: 32pt;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    #handTrackerCanvas {
+      z-index: 1;
+    }
+
+    #ARCanvas {
+      z-index: 4;
+    }
+
+    canvas {}
+  </style>
+</head>
+
+<body>
+  <div id='loading' class='modal'>
+    <div>
+      LOADING...
+    </div>
+  </div>
+
+  <div id='canvases'>
+    <canvas id='handTrackerCanvas'></canvas>
+
+    <canvas id='ARCanvas'></canvas>
+  </div>
+</body>
+
+</html>
