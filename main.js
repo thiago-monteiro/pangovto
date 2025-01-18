@@ -6,7 +6,7 @@ const _settings = {
   isModelLightMapped: true,
   occluderPath: 'assets/occluder.glb',
 
-  scale: 0.45,
+  scale: 0.2,
   translation: [0, -0.02, 0],
 
   debugCube: false,
