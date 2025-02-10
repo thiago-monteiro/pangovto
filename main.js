@@ -1,12 +1,12 @@
 const _settings = {
-  threshold: 0.9,
+  threshold: 0.5,
   NNVersion: 31,
 
   shoeRightPath: '',
-  isModelLightMapped: true,
+  isModelLightMapped: false,
   occluderPath: 'assets/occluder.glb',
 
-  scale: 0.2,
+  scale: 0.95,
   translation: [0, -0.02, 0],
 
   debugCube: false,
