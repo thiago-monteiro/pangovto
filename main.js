@@ -1,6 +1,6 @@
 const _settings = {
-  threshold: 0.5,
-  NNVersion: 31,
+  threshold: 0.9,
+  NNVersion: 23,
 
   shoeRightPath: '',
   isModelLightMapped: false,

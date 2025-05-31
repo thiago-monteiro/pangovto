@@ -15,7 +15,7 @@
   <script src="helpers/landmarksStabilizers/OneEuroLMStabilizer.js"></script>
   <script src="./main.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
   <style type='text/css'>
     body {
       margin: 0;
@@ -35,15 +35,141 @@
     }
 
     #loading {
-      background: #1c3e83;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       opacity: 1;
       z-index: 10;
+      align-items: center;
+      justify-content: center;
     }
 
-    #loading>div {
-      margin: auto;
-      font-size: 32pt;
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .loading-title {
+      font-size: clamp(24px, 5vw, 48px);
+      font-weight: 300;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .loading-subtitle {
+      font-size: clamp(14px, 3vw, 18px);
+      font-weight: 400;
+      opacity: 0.8;
+      margin-bottom: 48px;
+      letter-spacing: 1px;
+    }
+
+    /* Material Design Circular Progress Spinner */
+    .material-spinner {
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+      margin-bottom: 24px;
+    }
+
+    .material-spinner svg {
+      animation: rotate 2s linear infinite;
+      width: 56px;
+      height: 56px;
+    }
+
+    .material-spinner .path {
+      stroke: #ffffff;
+      stroke-linecap: round;
+      animation: dash 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .loading-dots {
+      display: flex;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .loading-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      margin: 0 4px;
+      animation: loadingDots 1.4s ease-in-out infinite both;
+    }
+
+    .loading-dot:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .loading-dot:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes loadingDots {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Glassmorphism effect for modern touch */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 48px 32px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      min-width: 280px;
+      max-width: 400px;
     }
 
     canvas {
@@ -59,19 +185,39 @@
     #ARCanvas {
       z-index: 4;
     }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .glass-card {
+        margin: 16px;
+        padding: 32px 24px;
+        min-width: auto;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div id='loading' class='modal'>
-    <div>
-      LOADING...
+    <div class="loading-container">
+      <div class="glass-card">
+        <div class="loading-title">FOOT VTO</div>
+        <div class="loading-subtitle">Virtual Try-On Experience</div>
+
+        <!-- Material Design Circular Progress Spinner -->
+        <div class="material-spinner">
+          <svg viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+          </svg>
+        </div>
+
+        <div style="font-size: 16px; font-weight: 400; opacity: 0.9;">Initializing AR Engine</div>
+      </div>
     </div>
   </div>
 
   <div id='canvases'>
     <canvas id='handTrackerCanvas'></canvas>
-
     <canvas id='ARCanvas'></canvas>
   </div>
 </body>
